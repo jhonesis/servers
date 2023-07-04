@@ -18,5 +18,5 @@ os.system("echo '{}' | sudo tee /etc/realmd.conf > /dev/null".format(texto))
 
 # Abrir el archivo con sudo nano
 
-texto2 = "session required pam_unix.so\nsession optional pam_winbind.so\nsession optional pam_sss.so\nsession optional pam_systemd.so\nsession required pam_mkhomedir.so skel=/etc/skel/ umask=0077"
+texto2 = "session required pam_unix.so\nsession optional pam_winbind.so\nsession optional pam_sss.so\nsession optional pam_systemd.so\nsession required pam_mkhomedir.so skel=/etc/skel/ umask=0077\nsession [default=1] pam_permit.so\nsession requisite pam_deny.so"
 os.system("echo '{}' | sudo tee /etc/pam.d/common-session > /dev/null".format(texto2))
