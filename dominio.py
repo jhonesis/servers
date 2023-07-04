@@ -8,7 +8,7 @@ subprocess.run(['sudo', 'apt', 'update'])
 subprocess.run(['sudo', 'apt-get', '-y', 'install', 'realmd', 'sssd', 'sssd-tools', 'samba-common', 'krb5-user', 'packagekit', 'samba-common-bin', 'samba-libs', 'adcli', 'ntp'])
 
 # Command 3: sudo realm join dominio -U 'Administrador' -v
-subprocess.run(['sudo', 'realm', 'join', 'dominio', '-U', 'Administrador', '-v'])
+subprocess.run(['sudo', 'realm', 'join', 'ip-domain', '-U', 'Administrador', '-v'])
 
 # Abrir el archivo con sudo nano
 
