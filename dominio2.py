@@ -2,7 +2,7 @@ import subprocess
 import os
 
 # Solicitar datos del usuario
-ip_domain = input("Ingrese la ip del controlador de dominio: ")
+domain = input("Ingrese la ip del controlador de dominio: ")
 dominio = input("Ingrese el dominio en mayusucla: ")
 
 # Command 1: sudo apt update
@@ -12,7 +12,7 @@ subprocess.run(['sudo', 'apt', 'update'])
 subprocess.run(['sudo', 'apt-get', '-y', 'install', 'realmd', 'sssd', 'sssd-tools', 'samba-common', 'krb5-user', 'packagekit', 'samba-common-bin', 'samba-libs', 'adcli', 'ntp'])
 
 # Command 3: sudo realm join dominio -U 'Administrador' -v
-subprocess.run(['sudo', 'realm', 'join', ip-domain, '-U', 'Administrador', '-v'])
+subprocess.run(['sudo', 'realm', 'join', domain, '-U', 'Administrator', '-v'])
 
 # Abrir el archivo con sudo nano
 
