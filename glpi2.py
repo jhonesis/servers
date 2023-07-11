@@ -1,0 +1,26 @@
+import subprocess
+import os
+
+subprocess.run(["sudo", "apt-get", "update"])
+print("******************UPDATE*********************")
+subprocess.run(["sudo", "apt-get", "install", "apache2", "php", "mysql-server", "libapache2-mod-php", "php-mysql", "php-curl", "php-mbstring", "php-gd", "php-xml", "php-intl", "php-bz2", "php-zip"])
+print("******************OK APACHE2, PHP, MYSQL*********************")
+subprocess.run(["sudo", "apt-get", "install", "glpi"])
+print("******************OK GLPI*********************")
+os.chdir("/tmp")
+print("******************INTRO '/TMP'*********************")
+subprocess.run(["wget", "https://github.com/glpi-project/glpi/releases/download/10.0.9/glpi-10.0.9.tgz"])
+print("******************OK WGET*********************")
+subprocess.run(["tar", "-xvzf", "/tmp/glpi-10.0.9.tgz"])
+print("******************OK TAR*********************")
+subprocess.run(["mv", "glpi", "/var/www/html"])
+print("******************OK MV*********************")
+texto = "Alias /glpi /opt/glpi\n\n<Directory /opt/glpi>\nDirectoryIndex index.php\nOptions FollowSymLinks\nAllowOverride Limit Options FileInfo\nRequire all granted\n</Directory>"
+os.system("echo '{}' | sudo tee /etc/realmd.conf > /dev/null".format(texto))
+print("******************OK WRITE*********************")
+subprocess.run(["sudo", "a2enconf", "glpi.conf"])
+print("******************OK A2ENCONF*********************")
+subprocess.run(["sudo", "systemctl", "restart", "apache2"])
+print("******************RESTART APACHE2*********************")
+subprocess.run(["sudo", "chown", "-R", "www-data:www-data", "/opt/glpi"])
+print("******************OK CHOWN*********************")
